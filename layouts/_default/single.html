@@ -21,32 +21,9 @@
             {{ end }}
         </header>
 
-        {{ if .Params.featured_image }}
-        <div class="featured-img">
-            <img src="{{ .Params.featured_image }}" alt="{{ .Title }}">
-        </div>
-        {{ end }}
-
         <div class="project-content">
             {{ .Content }}
         </div>
-
-        {{ if or .PrevInSection .NextInSection }}
-        <nav class="project-nav">
-            {{ if .PrevInSection }}
-            <a href="{{ .PrevInSection.Permalink }}" class="nav-link prev">
-                <span class="label">← Önceki</span>
-                <span class="title">{{ .PrevInSection.Title }}</span>
-            </a>
-            {{ end }}
-            {{ if .NextInSection }}
-            <a href="{{ .NextInSection.Permalink }}" class="nav-link next">
-                <span class="label">Sonraki →</span>
-                <span class="title">{{ .NextInSection.Title }}</span>
-            </a>
-            {{ end }}
-        </nav>
-        {{ end }}
     </div>
 </article>
 
@@ -112,21 +89,6 @@
     border-radius: 12px;
     font-size: 0.8rem;
     border: 1px solid rgba(157, 80, 187, 0.25);
-}
-
-/* Featured Image */
-.featured-img {
-    width: 100%;
-    margin-bottom: 3rem;
-}
-
-.featured-img img {
-    width: 100%;
-    height: auto;
-    max-height: 600px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
 }
 
 /* Content */
@@ -217,47 +179,6 @@
     border-radius: 8px;
 }
 
-/* Navigation */
-.project-nav {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.nav-link {
-    padding: 1.5rem;
-    background: rgba(0, 212, 255, 0.05);
-    border: 2px solid rgba(0, 212, 255, 0.2);
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.nav-link:hover {
-    background: rgba(0, 212, 255, 0.1);
-    border-color: rgba(0, 212, 255, 0.4);
-    transform: translateY(-3px);
-}
-
-.nav-link .label {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.6);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.nav-link .title {
-    font-size: 1.1rem;
-    color: #00d4ff;
-    font-weight: 600;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .project-detail {
@@ -266,14 +187,6 @@
     
     .project-header h1 {
         font-size: 2rem;
-    }
-    
-    .featured-img img {
-        max-height: 400px;
-    }
-    
-    .project-nav {
-        grid-template-columns: 1fr;
     }
 }
 </style>
