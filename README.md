@@ -1,269 +1,66 @@
-# İbrahim Çetin - Kişisel Portföy Sitesi
+# İbrahim Çetin - Portfolio
 
-Bu repo, Hugo static site generator kullanılarak oluşturulmuş kişisel portföy web sitesidir.
+Personal portfolio website built with Hugo and hosted on GitHub Pages.
 
-## 🚀 Özellikler
+**Live Site:** [ibrahim-cetin.github.io](https://ibrahim-cetin.github.io)
 
-- ✨ Modern ve temiz tasarım
-- 📱 Responsive (mobil uyumlu)
-- 🎨 Özelleştirilebilir tema (nomad-tech)
-- 📝 Blog/Proje yazıları için Markdown desteği
-- 🏷️ Tag ve kategori sistemi
-- 🔍 SEO optimize
-- ⚡ Hızlı yükleme
-- 🌐 GitHub Pages entegrasyonu
+## 🚀 Features
 
-## 📋 Gereksinimler
+- ✨ Modern, responsive design
+- 🎨 Custom theme with glassmorphism effects
+- 📝 Multi-language support (Turkish/English)
+- 🎮 Project showcase with interactive galleries
+- 🌐 Automated deployment via GitHub Actions
+- ⚡ Fast, static site generation
 
-- [Hugo Extended](https://gohugo.io/installation/) (v0.120.0 veya üstü)
-- Git
+## 🛠️ Tech Stack
 
-## 🛠️ Kurulum
+- **Framework:** [Hugo](https://gohugo.io/) (Static Site Generator)
+- **Theme:** Custom modified nomad-tech
+- **Hosting:** GitHub Pages
+- **CI/CD:** GitHub Actions
+- **Languages:** HTML, CSS, JavaScript, Markdown
 
-### 1. Repository'yi klonlayın
+## 📂 Project Structure
 
-```bash
-git clone https://github.com/ibrahimcetin/ibrahimcetin.github.io.git
-cd ibrahimcetin.github.io
+```
+├── content/          # Markdown content files
+│   ├── about/        # About page
+│   ├── portfolio/    # Portfolio listing
+│   └── posts/        # Project pages
+├── layouts/          # Custom Hugo templates
+├── static/           # Static assets (images, videos)
+└── hugo.toml         # Hugo configuration
 ```
 
-### 2. Hugo'yu yükleyin
-
-**Windows (Chocolatey):**
-```bash
-choco install hugo-extended
-```
-
-**macOS (Homebrew):**
-```bash
-brew install hugo
-```
-
-**Linux (Snap):**
-```bash
-snap install hugo
-```
-
-### 3. Temayı başlatın
-
-Tema zaten `themes/nomad-tech` klasöründe mevcut. Eğer tema submodule olarak eklendiyse:
+## 🚀 Local Development
 
 ```bash
+# Clone the repository
+git clone https://github.com/ibrahim-cetin/ibrahim-cetin.github.io.git
+cd ibrahim-cetin.github.io
+
+# Initialize theme submodule
 git submodule update --init --recursive
-```
 
-## 🚀 Yerel Geliştirme
-
-### Siteyi yerel olarak çalıştırın
-
-```bash
-hugo server -D
-```
-
-Tarayıcınızda `http://localhost:1313` adresine gidin.
-
-### Yeni içerik oluşturun
-
-**Yeni blog yazısı:**
-```bash
-hugo new posts/yeni-proje.md
-```
-
-**Yeni sayfa:**
-```bash
-hugo new about/hakkimda.md
-```
-
-## 📝 İçerik Ekleme
-
-### Proje Eklemek
-
-1. `content/posts/` klasöründe yeni bir Markdown dosyası oluşturun
-2. Front matter (üst bilgiler) ekleyin:
-
-```markdown
-+++
-date = '2026-01-07T10:00:00+03:00'
-draft = false
-title = 'Proje Başlığı'
-tags = ["React", "Node.js"]
-categories = ["Web Geliştirme"]
-+++
-
-# Proje İçeriği
-...
-```
-
-### Görsel Eklemek
-
-1. Görselleri `static/images/` klasörüne koyun
-2. Markdown içinde kullanın:
-
-```markdown
-![Açıklama](/images/screenshot.png)
-```
-
-### Video Eklemek
-
-YouTube videoları için:
-
-```markdown
-{{< youtube VIDEO_ID >}}
-```
-
-Veya doğrudan video dosyası:
-
-```markdown
-<video width="100%" controls>
-  <source src="/videos/demo.mp4" type="video/mp4">
-</video>
-```
-
-## ⚙️ Konfigürasyon
-
-`hugo.toml` dosyasını düzenleyerek siteyi özelleştirin:
-
-```toml
-baseURL = "https://ibrahimcetin.github.io/"
-title = "İbrahim Çetin | Portfolyo"
-
-[params]
-  author = "İbrahim Çetin"
-  subtitle = "Bilgisayar Mühendisi • Game Developer"
-  
-  [[params.social]]
-    name = "GitHub"
-    url = "https://github.com/ibrahimcetin"
-```
-
-## 🌐 GitHub Pages'e Deploy
-
-### Otomatik Deployment (Önerilir)
-
-Bu repo GitHub Actions ile otomatik deploy edilmek üzere yapılandırılmıştır.
-
-1. GitHub repo ayarlarına gidin
-2. **Settings > Pages** bölümüne gidin
-3. **Source**: "GitHub Actions" seçin
-4. `main` branch'e push yapın - otomatik deploy olur!
-
-```bash
-git add .
-git commit -m "Site güncellemesi"
-git push origin main
-```
-
-### Manuel Deployment
-
-```bash
-# Siteyi build edin
-hugo --minify
-
-# public klasörünü deploy edin
-# (GitHub Pages için gh-pages branch'ine)
-```
-
-## 📂 Klasör Yapısı
-
-```
-my-portfolio/
-├── .github/
-│   └── workflows/
-│       └── hugo.yml          # GitHub Actions workflow
-├── content/
-│   ├── _index.md             # Ana sayfa
-│   ├── about/                # Hakkımda
-│   ├── portfolio/            # Projeler
-│   ├── posts/                # Blog yazıları
-│   └── social/               # İletişim
-├── static/
-│   ├── images/               # Görseller
-│   └── videos/               # Videolar
-├── themes/
-│   └── nomad-tech/           # Tema dosyaları
-├── hugo.toml                 # Hugo konfigürasyonu
-├── .gitignore
-└── README.md
-```
-
-## 🎨 Özelleştirme
-
-### Renkleri Değiştirme
-
-`themes/nomad-tech/assets/scss/` klasöründeki SCSS dosyalarını düzenleyin.
-
-### Menüyü Düzenleme
-
-`hugo.toml` içinde `[menu]` bölümünü güncelleyin:
-
-```toml
-[[menu.main]]
-  name = "Yeni Sayfa"
-  url = "/yeni-sayfa"
-  weight = 6
-```
-
-### Sosyal Medya Linklerini Güncelleme
-
-`hugo.toml` içinde `[[params.social]]` bölümlerini güncelleyin.
-
-## 📚 Faydalı Komutlar
-
-```bash
-# Siteyi build et (production)
-hugo --minify
-
-# Draft içerikleri de göster
+# Run development server
 hugo server -D
 
-# Gelecek tarihli içerikleri göster
-hugo server -F
-
-# Yeni içerik oluştur
-hugo new posts/yeni-yazi.md
-
-# Build cache'i temizle
-hugo --gc
-
-# Hugo versiyonunu kontrol et
-hugo version
+# Build for production
+hugo --minify
 ```
 
-## 🐛 Sorun Giderme
+## 📄 License
 
-### Tema bulunamadı hatası
+This project is open source and available under the [MIT License](LICENSE).
 
-```bash
-git submodule update --init --recursive
-```
+## 📧 Contact
 
-### CSS/JS dosyaları yüklenmiyor
-
-`baseURL`'in doğru olduğundan emin olun ve siteyi yeniden build edin.
-
-### GitHub Pages'de 404 hatası
-
-- Repository adının `username.github.io` formatında olduğundan emin olun
-- GitHub Pages ayarlarında source'un doğru seçildiğini kontrol edin
-
-## 📄 Lisans
-
-Bu proje MIT lisansı altında lisanslanmıştır.
-
-## 🤝 Katkıda Bulunma
-
-Önerileriniz için issue açabilir veya pull request gönderebilirsiniz.
-
-## 📧 İletişim
-
-- Website: [ibrahimcetin.github.io](https://ibrahimcetin.github.io)
-- GitHub: [@ibrahimcetin](https://github.com/ibrahimcetin)
-- LinkedIn: [ibrahim-cetin](https://linkedin.com/in/ibrahim-cetin)
+- **Website:** [ibrahim-cetin.github.io](https://ibrahim-cetin.github.io)
+- **Email:** cetinibrahim915@gmail.com
+- **GitHub:** [@ibrahim-cetin](https://github.com/ibrahim-cetin)
+- **LinkedIn:** [ibrahim-cetin](https://linkedin.com/in/ibrahim-cetin)
 
 ---
 
-⭐ Bu projeyi beğendiyseniz yıldız vermeyi unutmayın!
-
-**Son Güncelleme:** Ocak 2026
-
-
+⭐ If you found this project interesting, feel free to star it!
