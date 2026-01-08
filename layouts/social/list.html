@@ -1,0 +1,191 @@
+{{ define "main" }}
+<div class="social-page">
+    <div class="container">
+        <div class="page-header">
+            <h1>{{ .Title }}</h1>
+            <div class="page-intro">{{ .Content }}</div>
+        </div>
+        
+        {{ if .Site.Params.contact }}
+        <div class="contact-info">
+            <div class="contact-grid">
+                {{ range .Site.Params.contact }}
+                {{ if or (eq .name "email") (eq .name "linkedin") (eq .name "github") }}
+                <a href="{{ if eq .name "email" }}mailto:{{ .value }}{{ else if eq .name "linkedin" }}https://linkedin.com/in/{{ .value }}{{ else if eq .name "github" }}https://github.com/{{ .value }}{{ end }}" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="contact-item">
+                    <span class="contact-icon">{{ .icon }}</span>
+                    <div class="contact-details">
+                        <strong>{{ .name | title }}</strong>
+                        <span>{{ .value }}</span>
+                    </div>
+                </a>
+                {{ end }}
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+
+<style>
+.social-page {
+    margin-top: 5rem;
+    padding: 2rem;
+    min-height: 80vh;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+    background: linear-gradient(45deg, #00d4ff, #9d50bb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.page-intro {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.8;
+}
+
+.contact-info {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.5);
+}
+
+.contact-icon {
+    font-size: 3rem;
+    margin-right: 1.5rem;
+    flex-shrink: 0;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-details strong {
+    text-transform: capitalize;
+    margin-bottom: 0.5rem;
+    color: #00d4ff;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.contact-details span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    word-break: break-all;
+}
+
+/* Özel renkler her platform için */
+.contact-item:nth-child(1) {
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+.contact-item:nth-child(1):hover {
+    border-color: rgba(255, 107, 107, 0.6);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+}
+
+.contact-item:nth-child(1) strong {
+    color: #ff6b6b;
+}
+
+.contact-item:nth-child(2) {
+    border-color: rgba(0, 119, 181, 0.3);
+}
+
+.contact-item:nth-child(2):hover {
+    border-color: rgba(0, 119, 181, 0.6);
+    box-shadow: 0 15px 35px rgba(0, 119, 181, 0.3);
+}
+
+.contact-item:nth-child(2) strong {
+    color: #0077B5;
+}
+
+.contact-item:nth-child(3) {
+    border-color: rgba(136, 136, 136, 0.3);
+}
+
+.contact-item:nth-child(3):hover {
+    border-color: rgba(136, 136, 136, 0.6);
+    box-shadow: 0 15px 35px rgba(136, 136, 136, 0.3);
+}
+
+.contact-item:nth-child(3) strong {
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .social-page {
+        margin-top: 3rem;
+        padding: 1rem;
+    }
+    
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-item {
+        padding: 1.5rem;
+    }
+    
+    .contact-icon {
+        font-size: 2.5rem;
+        margin-right: 1rem;
+    }
+    
+    .contact-details strong {
+        font-size: 1.1rem;
+    }
+    
+    .contact-details span {
+        font-size: 0.9rem;
+    }
+}
+</style>
+{{ end }}
+

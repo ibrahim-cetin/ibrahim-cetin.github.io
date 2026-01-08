@@ -1,0 +1,76 @@
+{{ define "main" }}
+<div class="error-container">
+    <div class="error-content">
+        <h1>404</h1>
+        <h2>{{ if eq .Site.Language.Lang "tr" }}Sayfa Bulunamadı{{ else }}Page Not Found{{ end }}</h2>
+        <p>{{ if eq .Site.Language.Lang "tr" }}Aradığınız sayfa mevcut değil veya taşınmış olabilir.{{ else }}The page you are looking for doesn't exist or may have been moved.{{ end }}</p>
+        <a href="{{ .Site.BaseURL }}">{{ if eq .Site.Language.Lang "tr" }}Ana Sayfaya Dön{{ else }}Back to Home{{ end }}</a>
+    </div>
+</div>
+
+<style>
+.error-container {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.error-content {
+    text-align: center;
+    max-width: 600px;
+}
+
+.error-content h1 {
+    font-size: 8rem;
+    background: linear-gradient(45deg, #00d4ff, #9d50bb, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    font-weight: bold;
+}
+
+.error-content h2 {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 1rem;
+}
+
+.error-content p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.error-content a {
+    display: inline-block;
+    padding: 12px 30px;
+    background: linear-gradient(45deg, #00d4ff, #9d50bb);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.error-content a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+    .error-content h1 {
+        font-size: 5rem;
+    }
+    
+    .error-content h2 {
+        font-size: 1.5rem;
+    }
+}
+</style>
+{{ end }}
+
+

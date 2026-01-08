@@ -1,0 +1,112 @@
+baseURL = "https://ibrahimcetin.github.io/"
+defaultContentLanguage = "tr"
+theme = "nomad-tech"
+
+[pagination]
+  pagerSize = 9
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+[languages]
+  [languages.tr]
+    languageCode = "tr-TR"
+    languageName = "TR"
+    title = "İbrahim Çetin | Portfolyo"
+    weight = 1
+    contentDir = "content"
+    
+  [languages.en]
+    languageCode = "en-US"
+    languageName = "EN"
+    title = "İbrahim Çetin | Portfolio"
+    weight = 2
+    contentDir = "content"
+
+[params]
+  author = "İbrahim Çetin"
+  logo = "İBRAHİM ÇETİN"
+  subtitle = "Bilgisayar Mühendisi • Game Developer"
+  description = "Projelerim, yazılım geliştirme deneyimlerim ve teknik içerikler"
+
+  # Google Analytics (isteğe bağlı - kendi ID'nizi ekleyebilirsiniz)
+  # googleAnalytics = "G-XXXXXXXXXX"
+
+  # Sosyal Medya Linkleri
+  [[params.social]]
+    name = "GitHub"
+    class = "github"
+    icon = "💻"
+    description = "Projelerim ve açık kaynak katkılarım"
+    url = "https://github.com/ibrahimcetin"
+    button_text = "Profili Ziyaret Et"
+
+  [[params.social]]
+    name = "LinkedIn"
+    class = "linkedin"
+    icon = "👔"
+    description = "Profesyonel ağım ve iş deneyimlerim"
+    url = "https://linkedin.com/in/ibrahim-cetin"
+    button_text = "Bağlantı Kur"
+
+  [[params.social]]
+    name = "YouTube"
+    class = "youtube"
+    icon = "📺"
+    description = "Video içeriklerim ve projelerim"
+    url = "https://www.youtube.com/@yourhandle"
+    button_text = "Kanala Git"
+
+  # İletişim Bilgileri
+  [[params.contact]]
+    icon = "📧"
+    name = "email"
+    value = "cetinibrahim915@gmail.com"
+  
+  [[params.contact]]
+    icon = "💼"
+    name = "linkedin"
+    value = "ibrahim-cetin"
+  
+  [[params.contact]]
+    icon = "💻"
+    name = "github"
+    value = "ibrahim-cetin"
+
+[languages.tr.menu]
+  [[languages.tr.menu.main]]
+    name = "Ana Sayfa"
+    url = "/"
+    weight = 1
+
+  [[languages.tr.menu.main]]
+    name = "Hakkımda"
+    url = "/about"
+    weight = 2
+
+  [[languages.tr.menu.main]]
+    name = "Projeler"
+    url = "/portfolio"
+    weight = 3
+
+[languages.en.menu]
+  [[languages.en.menu.main]]
+    name = "Home"
+    url = "/en/"
+    weight = 1
+
+  [[languages.en.menu.main]]
+    name = "About"
+    url = "/en/about"
+    weight = 2
+
+  [[languages.en.menu.main]]
+    name = "Portfolio"
+    url = "/en/portfolio"
+    weight = 3

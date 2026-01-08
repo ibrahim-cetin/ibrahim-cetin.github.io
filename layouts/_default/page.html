@@ -1,0 +1,68 @@
+{{ define "main" }}
+<div class="page-content">
+    <div class="page-container">
+        {{ .Content }}
+    </div>
+</div>
+
+<style>
+.page-content {
+    padding: 3rem 2rem;
+    min-height: 70vh;
+}
+
+.page-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.page-container h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #00d4ff, #9d50bb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+}
+
+.page-container h2 {
+    font-size: 1.8rem;
+    color: #00d4ff;
+    margin: 2rem 0 1rem;
+}
+
+.page-container p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    margin: 1rem 0;
+}
+
+.page-container ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.page-container li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.page-container li:before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: #00d4ff;
+}
+
+@media (max-width: 768px) {
+    .page-content {
+        padding: 2rem 1rem;
+    }
+    
+    .page-container h1 {
+        font-size: 2rem;
+    }
+}
+</style>
+{{ end }}

@@ -1,0 +1,22 @@
+<nav role="navigation" aria-label="Main navigation">
+    <div class="container">
+        <div class="nav-container">
+            <a href="{{ .Site.BaseURL }}" class="logo" aria-label="{{ .Site.Title }} - Home">{{ .Site.Params.logo | default "GP" }}</a>
+            <ul class="nav-links" id="nav-menu">
+                {{ range .Site.Menus.main }}
+                <li><a href="{{ .URL }}" aria-current="false">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+            <div class="lang-switcher" role="group" aria-label="Language selection">
+                {{ if .IsTranslated }}
+                {{ range .Translations }}
+                <a href="{{ .Permalink }}" class="lang-link">{{ .Language.LanguageName }}</a>
+                {{ end }}
+                {{ end }}
+                <a href="{{ .Permalink }}" class="lang-link active" aria-current="true">{{ .Language.LanguageName }}</a>
+            </div>
+            <button class="mobile-menu-btn" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">☰</button>
+        </div>
+    </div>
+</nav>
+

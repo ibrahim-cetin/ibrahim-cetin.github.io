@@ -1,0 +1,244 @@
+{{ define "main" }}
+<section class="hero">
+    <div class="hero-content">
+        <h1>{{ .Site.Params.author }}</h1>
+        <p class="subtitle">{{ .Site.Params.subtitle }}</p>
+        <div class="cta-buttons">
+            {{ if eq .Site.Language.Lang "tr" }}
+            <a href="/portfolio/" class="btn btn-primary">Projelerim</a>
+            <a href="/about/" class="btn btn-secondary">Hakkımda</a>
+            {{ else }}
+            <a href="/en/portfolio/" class="btn btn-primary">My Projects</a>
+            <a href="/en/about/" class="btn btn-secondary">About Me</a>
+            {{ end }}
+        </div>
+        
+        <div class="contact-grid">
+            {{ range .Site.Params.contact }}
+            {{ if or (eq .name "email") (eq .name "linkedin") (eq .name "github") }}
+            <a href="{{ if eq .name "email" }}mailto:{{ .value }}{{ else if eq .name "linkedin" }}https://linkedin.com/in/{{ .value }}{{ else if eq .name "github" }}https://github.com/{{ .value }}{{ end }}" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="contact-card">
+                <span class="contact-icon">{{ .icon }}</span>
+                <div class="contact-details">
+                    <strong>{{ .name | title }}</strong>
+                    <span>{{ .value }}</span>
+                </div>
+            </a>
+            {{ end }}
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<style>
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem 1rem;
+    background: radial-gradient(circle at 50% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%);
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #00d4ff, #9d50bb, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.2); }
+}
+
+.hero .subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn:focus {
+    outline: 2px solid #00d4ff;
+    outline-offset: 2px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #00d4ff, #9d50bb);
+    color: white;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #00d4ff;
+    border: 2px solid #00d4ff;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-card {
+    display: flex;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(0, 212, 255, 0.2);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 212, 255, 0.3);
+    border-color: rgba(0, 212, 255, 0.5);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-details strong {
+    text-transform: capitalize;
+    margin-bottom: 0.3rem;
+    color: #00d4ff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.contact-details span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.85rem;
+    word-break: break-all;
+}
+
+/* Özel renkler */
+.contact-card:nth-child(1) {
+    border-color: rgba(255, 107, 107, 0.3);
+}
+
+.contact-card:nth-child(1):hover {
+    border-color: rgba(255, 107, 107, 0.6);
+    box-shadow: 0 15px 35px rgba(255, 107, 107, 0.3);
+}
+
+.contact-card:nth-child(1) strong {
+    color: #ff6b6b;
+}
+
+.contact-card:nth-child(2) {
+    border-color: rgba(0, 119, 181, 0.3);
+}
+
+.contact-card:nth-child(2):hover {
+    border-color: rgba(0, 119, 181, 0.6);
+    box-shadow: 0 15px 35px rgba(0, 119, 181, 0.3);
+}
+
+.contact-card:nth-child(2) strong {
+    color: #0077B5;
+}
+
+.contact-card:nth-child(3) {
+    border-color: rgba(136, 136, 136, 0.3);
+}
+
+.contact-card:nth-child(3):hover {
+    border-color: rgba(136, 136, 136, 0.6);
+    box-shadow: 0 15px 35px rgba(136, 136, 136, 0.3);
+}
+
+.contact-card:nth-child(3) strong {
+    color: #888;
+}
+
+@media (max-width: 968px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem 2rem;
+    }
+    
+    .contact-grid {
+        margin-top: 2rem;
+    }
+    
+    .contact-card {
+        padding: 1rem 1.2rem;
+    }
+    
+    .contact-icon {
+        font-size: 1.8rem;
+    }
+    
+    .contact-details strong {
+        font-size: 0.95rem;
+    }
+    
+    .contact-details span {
+        font-size: 0.8rem;
+    }
+}
+</style>
+{{ end }}
+
